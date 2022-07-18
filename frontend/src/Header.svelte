@@ -25,7 +25,7 @@
 <main>
   <div class="header">
     <div class="header-left">
-      <img src="favicon.png" alt="Logo" width="80px" />
+      <img src="icon.jpg" alt="Logo" width="80px" />
     </div>
     <div class="header-right">
       <h1>Weatherly</h1>
@@ -56,11 +56,16 @@
 <style>
   .header {
     display: flex;
+    background: #ffffff;
   }
   .header-right {
     display: flex;
     justify-content: space-between;
     flex-basis: 100%;
     align-items: center;
+    padding-right: 2vw;
+  }
+  .header-left {
+    padding-left: 2vw;
   }
 </style>
