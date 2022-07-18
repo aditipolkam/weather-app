@@ -19,12 +19,13 @@ app.post("/check-weather", async (req, res) => {
 
   request(apiurl, function (err, r, body) {
     const apidata = JSON.parse(body);
-    // let w = apidata.weather.main;
-    // const weather_imgs = {};
+
+    let icon = apidata.weather.icon;
+    let imgurl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     const data = {
       city: apidata.name,
       country: apidata.sys.country,
-      //imgurl: imgurl,
+      imgurl: imgurl,
       weather: apidata.weather.main,
       weather_desc: apidata.weather.description,
       temperature: apidata.main.temp,
