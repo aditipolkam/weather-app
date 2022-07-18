@@ -1,0 +1,66 @@
+<script>
+  let city = "";
+  let weatherData = undefined;
+  const checkWeather = async () => {
+    console.log(city);
+    let url = "http://localhost:3001/check-weather";
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        city,
+      }),
+    });
+
+    console.log(res);
+    const data = await res.json();
+    console.log(data);
+    weatherData = data;
+  };
+</script>
+
+<main>
+  <div class="header">
+    <div class="header-left">
+      <img src="favicon.png" alt="Logo" width="80px" />
+    </div>
+    <div class="header-right">
+      <h1>Weatherly</h1>
+      <div class="search">
+        <input
+          type="text"
+          class="city"
+          bind:value={city}
+          placeholder="City"
+          required
+        />
+        <button type="button" on:click={checkWeather} class="search-btn"
+          >Search</button
+        >
+      </div>
+    </div>
+  </div>
+
+  {#if weatherData != undefined}
+    <div class="weather-content">
+      <div class="city-title">
+        {weatherData.name}, {weatherData.sys.country}
+      </div>
+    </div>
+  {/if}
+</main>
+
+<style>
+  .header {
+    display: flex;
+  }
+  .header-right {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 100%;
+    align-items: center;
+  }
+</style>
