@@ -18,7 +18,19 @@ app.post("/check-weather", async (req, res) => {
     apikey;
 
   request(apiurl, function (err, r, body) {
-    const data = JSON.parse(body);
+    const apidata = JSON.parse(body);
+    // let w = apidata.weather.main;
+    // const weather_imgs = {};
+    const data = {
+      city: apidata.name,
+      country: apidata.sys.country,
+      //imgurl: imgurl,
+      weather: apidata.weather.main,
+      weather_desc: apidata.weather.description,
+      temperature: apidata.main.temp,
+      sunrise: apidata.sys.sunrise,
+      sunset: apidata.sys.sunset,
+    };
 
     res.json(data);
     console.log(data);

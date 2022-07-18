@@ -47,7 +47,7 @@
   {#if weatherData != undefined}
     <div class="weather-content">
       <div class="city-title">
-        {weatherData.name}, {weatherData.sys.country}
+        {weatherData.city}, {weatherData.country}
       </div>
     </div>
   {/if}
