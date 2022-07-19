@@ -84,7 +84,6 @@
   .sun {
     display: flex;
     justify-content: space-between;
-    width: 13vw;
     margin-bottom: 1vh;
   }
 

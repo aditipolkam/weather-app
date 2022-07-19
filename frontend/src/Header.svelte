@@ -1,6 +1,7 @@
 <script>
   import { weather } from "./weatherStore.js";
   let city = "";
+  console.log(localStorage.getItem("last-update"));
 
   const checkWeather = async () => {
     console.log(city);
@@ -12,7 +13,7 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        city,
+        city: city || localStorage.getItem("city"),
       }),
     });
 
@@ -24,8 +25,11 @@
       alert("No such city found.");
     } else {
       weather.set(data);
+      localStorage.setItem("city", data.city);
+      localStorage.setItem("last-update", new Date());
     }
   };
+  checkWeather();
 </script>
 
 <main>
