@@ -1,20 +1,28 @@
 <script>
+  import { weather } from "./weatherStore.js";
+  //console.log($weather);
 </script>
 
 <main>
   <div class="weather-card">
     <div class="weathercard-left">
       <div class="weather-icon">
-        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="" />
+        <img src={$weather.imgurl} alt="" />
       </div>
-      <h3 class="weather-desc">overcast clouds</h3>
+      <h3 class="weather-desc">{$weather.weather_desc}</h3>
     </div>
     <div class="weathercard-right">
-      <div class="card-title">Pune, IN</div>
-      <div class="temp">22.07 &#8451;</div>
+      <div class="card-title">{$weather.city}, {$weather.country}</div>
+      <div class="temp">{$weather.temperature} &#8451;</div>
       <div class="sun">
-        <div class="rise"><img src="sunrise.png" alt="" /> 6:01 am</div>
-        <div class="set"><img src="sunset.png" alt="" /> 6:53 pm</div>
+        <div class="rise">
+          <img src="sunrise.png" alt="" />
+          {$weather.sunrise} am
+        </div>
+        <div class="set">
+          <img src="sunset.png" alt="" />
+          {$weather.sunset} pm
+        </div>
       </div>
     </div>
   </div>

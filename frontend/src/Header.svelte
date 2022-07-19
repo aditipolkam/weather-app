@@ -1,6 +1,8 @@
 <script>
+  import { weather } from "./weatherStore.js";
   let city = "";
   let weatherData = undefined;
+
   const checkWeather = async () => {
     console.log(city);
     let url = "http://localhost:3001/check-weather";
@@ -17,8 +19,10 @@
 
     console.log(res);
     const data = await res.json();
-    console.log(data);
-    weatherData = data;
+    //console.log(data);
+    //weatherData = data;
+    weather.set(data);
+    //console.log($weather);
   };
 </script>
 
@@ -44,13 +48,13 @@
     </div>
   </div>
 
-  {#if weatherData != undefined}
+  <!-- {#if weatherData != undefined}
     <div class="weather-content">
       <div class="city-title">
         {weatherData.city}, {weatherData.country}
       </div>
     </div>
-  {/if}
+  {/if} -->
 </main>
 
 <style>
