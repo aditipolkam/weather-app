@@ -19,22 +19,29 @@ app.post("/check-weather", async (req, res) => {
 
   request(apiurl, function (err, r, body) {
     const apidata = JSON.parse(body);
-    var d = new Date(0);
-    let icon = apidata.weather[0].icon;
-    let imgurl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-    const data = {
-      city: apidata.name,
-      country: apidata.sys.country,
-      imgurl: imgurl,
-      weather: apidata.weather[0].main,
-      weather_desc: apidata.weather[0].description,
-      temperature: apidata.main.temp,
-      sunrise: new Date(apidata.sys.sunrise * 1000).toLocaleTimeString(),
-      sunset: new Date(apidata.sys.sunset * 1000).toLocaleTimeString(),
-    };
+    console.log(apidata);
 
-    res.json(data);
-    console.log(data);
+    if (apidata.cod == 200) {
+      var d = new Date(0);
+      let icon = apidata.weather[0].icon;
+      let imgurl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+      const data = {
+        cod: apidata.cod,
+        city: apidata.name,
+        country: apidata.sys.country,
+        imgurl: imgurl,
+        weather: apidata.weather[0].main,
+        weather_desc: apidata.weather[0].description,
+        temperature: apidata.main.temp,
+        sunrise: new Date(apidata.sys.sunrise * 1000).toLocaleTimeString(),
+        sunset: new Date(apidata.sys.sunset * 1000).toLocaleTimeString(),
+      };
+
+      res.json(data);
+      console.log(data);
+    } else {
+      res.json(apidata);
+    }
   });
 });
 

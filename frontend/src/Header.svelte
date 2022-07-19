@@ -1,7 +1,6 @@
 <script>
   import { weather } from "./weatherStore.js";
   let city = "";
-  let weatherData = undefined;
 
   const checkWeather = async () => {
     console.log(city);
@@ -21,8 +20,11 @@
     const data = await res.json();
     //console.log(data);
     //weatherData = data;
-    weather.set(data);
-    //console.log($weather);
+    if (data.cod == 404) {
+      alert("No such city found.");
+    } else {
+      weather.set(data);
+    }
   };
 </script>
 
@@ -47,14 +49,6 @@
       </div>
     </div>
   </div>
-
-  <!-- {#if weatherData != undefined}
-    <div class="weather-content">
-      <div class="city-title">
-        {weatherData.city}, {weatherData.country}
-      </div>
-    </div>
-  {/if} -->
 </main>
 
 <style>
