@@ -17,11 +17,11 @@
       <div class="sun">
         <div class="rise">
           <img src="sunrise.png" alt="" />
-          {$weather.sunrise} am
+          <span>{$weather.sunrise}</span>
         </div>
         <div class="set">
           <img src="sunset.png" alt="" />
-          {$weather.sunset} pm
+          <span>{$weather.sunset}</span>
         </div>
       </div>
     </div>
@@ -38,6 +38,11 @@
 
   .weather-icon img {
     aspect-ratio: 1/1;
+  }
+
+  .rise span,
+  .set span {
+    font-size: 0.9em;
   }
 
   .temp {

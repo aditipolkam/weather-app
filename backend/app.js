@@ -19,7 +19,7 @@ app.post("/check-weather", async (req, res) => {
 
   request(apiurl, function (err, r, body) {
     const apidata = JSON.parse(body);
-
+    var d = new Date(0);
     let icon = apidata.weather[0].icon;
     let imgurl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     const data = {
@@ -29,8 +29,8 @@ app.post("/check-weather", async (req, res) => {
       weather: apidata.weather[0].main,
       weather_desc: apidata.weather[0].description,
       temperature: apidata.main.temp,
-      sunrise: apidata.sys.sunrise,
-      sunset: apidata.sys.sunset,
+      sunrise: new Date(apidata.sys.sunrise * 1000).toLocaleTimeString(),
+      sunset: new Date(apidata.sys.sunset * 1000).toLocaleTimeString(),
     };
 
     res.json(data);
