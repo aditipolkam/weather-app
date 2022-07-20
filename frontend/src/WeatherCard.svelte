@@ -47,7 +47,7 @@
 
   .temp {
     font-size: x-large;
-    margin-bottom: 1vh;
+    margin-bottom: 2vh;
   }
   .weather-card {
     background: #a9a9de66;

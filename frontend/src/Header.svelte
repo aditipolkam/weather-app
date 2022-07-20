@@ -5,7 +5,7 @@
 
   const checkWeather = async () => {
     console.log(city);
-    let url = "http://localhost:3001/check-weather";
+    let url = "https://weather-aditipolkam.herokuapp.com/check-weather";
 
     const res = await fetch(url, {
       method: "POST",
