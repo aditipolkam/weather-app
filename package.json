@@ -1,0 +1,19 @@
+{
+  "name": "weather-svelte",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/aditipolkam/weather-app.git",
+  "author": "Aditi Polkam <aditipolkam@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "start": "concurrently --kill-others \"yarn workspace backend start\" \"yarn workspace frontend dev\""
+  },
+  "dependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
