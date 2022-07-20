@@ -10,6 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("Get request receieved.");
+});
+
 app.post("/check-weather", async (req, res) => {
   let city = req.body.city;
   console.log(city);
